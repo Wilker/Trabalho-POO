@@ -10,8 +10,5 @@ public abstract class Estoque {
     Map<Produto, Integer> estoque = new HashMap<>();
 
     public Estoque() {
-    }
-    
-    void
-    
+    }  
 }

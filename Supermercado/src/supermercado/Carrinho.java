@@ -4,10 +4,10 @@ package supermercado;
 import java.util.ArrayList;
 
 public class Carrinho {
-    private ArrayList<Item> listaCompra;
+    private ArrayList<ItemCarrinho> listaCompra;
     
     
-    public ArrayList<Item> getCarrinho(){
+    public ArrayList<ItemCarrinho> getCarrinho(){
         return listaCompra;
     }
 }

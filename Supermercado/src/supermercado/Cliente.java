@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Cliente {
     private String nome;
     private String endereco;
-    ArrayList<Item> carrinho = new Carrinho().getCarrinho();
+    ArrayList<ItemCarrinho> carrinho = new Carrinho().getCarrinho();
     
     Cliente(String nomeCliente, String addrCliente){
         nome = nomeCliente;
@@ -22,12 +22,12 @@ public class Cliente {
     
     public void adicionarAoCarrinho(Produto p, int quantidade){
         if ( carrinho == null){
-            ArrayList<Item> compras = new ArrayList<>();
-            compras.add(new Item(p, quantidade));
+            ArrayList<ItemCarrinho> compras = new ArrayList<>();
+            compras.add(new ItemCarrinho(p, quantidade));
             carrinho = compras;
         }
         else{
-            carrinho.add(new Item(p, quantidade));
+            carrinho.add(new ItemCarrinho(p, quantidade));
             carrinho = this.carrinho;
         }
     }

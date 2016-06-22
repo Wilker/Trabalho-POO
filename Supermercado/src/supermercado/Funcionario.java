@@ -23,7 +23,7 @@ class Funcionario {
         System.out.println("");
     }
     
-    public void darBaixa(ArrayList<Item> carrinho){
+    public void darBaixa(ArrayList<ItemCarrinho> carrinho){
         //TODO implementar Estoque para dar baixa dos produtos
     }
 }
