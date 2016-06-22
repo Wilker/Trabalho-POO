@@ -1,9 +1,12 @@
 package supermercado;
 
+import java.util.Scanner;
+
 public class Caixa {
     private int numeroCaixa;
     Funcionario funcionario;
     private float dinheiroEmCaixa;
+    Scanner teclado = new Scanner(System.in);
     
     Caixa(int numero){
         this.numeroCaixa = numero;
@@ -11,42 +14,66 @@ public class Caixa {
     }
     
     //Método Troco recebe o dinheiro a ser pago de algum pedido e retorna o troco.
-    public float Troco(float dinheiroRecebido, Pedido pedido){
-        if (dinheiroRecebido < pedido.precoTotal()){ //Se o dinheiro não for suficiente para pagar a compra
+    public float Troco(PagamentoDinheiro pagamento, Pedido pedido){
+        if (pagamento.getValor() < pedido.precoTotal()){ //Se o dinheiro não for suficiente para pagar a compra
             System.out.println("Dinheiro insuficiente.");
         }
         else { //Caso seja suficiente...
-            float troco = dinheiroRecebido - pedido.precoTotal();
+            float troco = pagamento.getValor() - pedido.precoTotal();
             if (troco <= dinheiroEmCaixa){ //Verifica se é possível dar o troco
                 dinheiroEmCaixa = dinheiroEmCaixa - troco;
-                dinheiroEmCaixa = dinheiroEmCaixa + dinheiroRecebido;
+                dinheiroEmCaixa = dinheiroEmCaixa + pagamento.getValor();
                 return troco;
             }
             else{ //Senão devolve o dinheiro.
-                System.out.println("Troco insuficiente.");
-                return dinheiroRecebido;
+                System.out.println("Desculpe, troco insuficiente.");
+                return pagamento.getValor();
             }
         }
         return -1; //Valor utilizado para definir o tipo de erro impresso na tela pelo método "receberClienteNoCaixa".
     }
     
-    
-    
-    void receberClienteNoCaixa(Cliente cliente, float pagamento){
-        Pedido pedido = new Pedido(cliente.carrinho, cliente);
-        System.out.println("Total a pagar: " + pedido.precoTotal());
-        float troco = Troco(pagamento, pedido); //Estabelece o troco, se houver.
-        if (troco == pagamento){
-            return;
-        }
-        if (troco == -1){
-            return;
-        }
-        if (troco < pagamento){
+    void receberClienteNoCaixa(Cliente cliente){
+        Pedido pedido = new Pedido(cliente.carrinho, cliente); //Instancia o pedido referente ao carrinho do cliente.
+        
         pedido.imprimeVenda(); //Imprime o relatório completo da venda.
-        funcionario.darBaixa(cliente.carrinho); 
-        System.out.println("Troco: R$" + troco);
-        System.out.println("Compra efetuada com sucesso!");
+        System.out.println("");
+        System.out.println("Qual a forma de pagamento?");
+        System.out.println("1. Dinheiro");
+        System.out.println("2. Cartão");
+        
+        int opcao = teclado.nextInt();
+        
+        if (opcao == 1){
+            System.out.println("Informe o valor a ser pago");
+            Pagamento pagamento1 = new PagamentoDinheiro(teclado.nextFloat());
+            float troco1 = 0;
+            troco1 = Troco((PagamentoDinheiro) pagamento1, pedido); //Estabelece o troco, se houver.
+            if (troco1 == pagamento1.getValor()){
+                return;
+            }
+            if (troco1 == -1){
+                return;
+            }
+            if (troco1 < pagamento1.getValor()){
+                //funcionario.darBaixa(cliente.carrinho); 
+                System.out.println("Troco: R$" + troco1);
+                System.out.println("Compra efetuada com sucesso!");
+                System.out.println("");
+            }
+        }
+        
+        if (opcao == 2){
+            Pagamento pagamento2 = new PagamentoCartao(true);
+            float troco2 = 0;
+            //funcionario.darBaixa(cliente.carrinho); 
+            System.out.println("Troco: R$" + troco2);
+            System.out.println("Compra efetuada com sucesso!");
+            System.out.println("");
+        }
+        
+        if (opcao != 1 && opcao != 2){
+            System.out.println("Opção inválida.");
         }
     }
 

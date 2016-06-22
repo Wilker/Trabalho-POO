@@ -11,7 +11,7 @@ package supermercado;
  */
 public class ProdutoQuilo extends Produto {
 
-    public ProdutoQuilo(String nome, int preco) {
+    public ProdutoQuilo(String nome, float preco) {
         super(nome, preco);
     }
 

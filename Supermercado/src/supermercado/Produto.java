@@ -2,15 +2,15 @@ package supermercado;
 
 import java.util.Objects;
 
-public abstract class Produto {
+public class Produto {
     protected String nome;
-    protected int preco;
+    protected float preco;
 
-    public int getPreco() {
+    public float getPreco() {
         return preco;
     }
 
-    public Produto(String nome, int preco) {
+    public Produto(String nome, float preco) {
         this.nome = nome;
         this.preco = preco;
     }

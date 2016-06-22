@@ -2,5 +2,14 @@
 package supermercado;
 
 public abstract class Pagamento {
-    public abstract void Paga();
+    
+    protected float valor;
+    protected boolean cartao;
+    
+    
+    float getValor(){
+        return this.valor;
+    }
+    
+    public abstract boolean Paga();
 }

@@ -1,7 +1,7 @@
 package supermercado;
 
+
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Cliente {
@@ -21,7 +21,7 @@ public class Cliente {
     Scanner teclado = new Scanner(System.in);
     
     public void adicionarAoCarrinho(Produto p, int quantidade){
-        if ( carrinho == null){
+        if (carrinho == null){
             ArrayList<ItemCarrinho> compras = new ArrayList<>();
             compras.add(new ItemCarrinho(p, quantidade));
             carrinho = compras;
@@ -34,9 +34,6 @@ public class Cliente {
     
     public void irAoCaixa(Caixa caixa){
         Caixa caixaCliente = caixa;
-        System.out.println("Total a pagar: " + caixa.getPrecoTotal());
-        System.out.println("Informe o quanto deseja pagar: ");
-        caixaCliente.receberClienteNoCaixa(this, teclado.nextInt());
-        
+        caixaCliente.receberClienteNoCaixa(this);
     }
 }

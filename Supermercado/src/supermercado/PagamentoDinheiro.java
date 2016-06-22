@@ -2,9 +2,16 @@ package supermercado;
 
 public class PagamentoDinheiro extends Pagamento{
 
+    PagamentoDinheiro(float valor){
+        super.valor = valor;
+    }
+    
     @Override
-    public void Paga() {
-        
+    public boolean Paga() {
+        if (valor > 0)
+            return true;
+        else
+            return false;
     }
     
 }

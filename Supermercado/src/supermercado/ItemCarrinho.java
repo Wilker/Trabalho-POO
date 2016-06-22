@@ -4,6 +4,7 @@ public class ItemCarrinho {
 
     private Produto produto;
     private int qtd;
+    private boolean tipo;
 
     public ItemCarrinho(Produto produto, int qtde) {
         this.produto = produto;
