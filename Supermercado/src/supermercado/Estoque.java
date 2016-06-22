@@ -1,53 +1,17 @@
 package supermercado;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class Estoque {
-    List<Produto> estoque;
-    private int qtdeEstoque;
-    
-    void setQtdeEstoque(int i) {
-       qtdeEstoque = i;       
-    }
-    
-    int getQtdeEstoque() {
-       return qtdeEstoque;
-    }
-    
-    Estoque(){
-        this.estoque = new ArrayList<>();
-    }
-    
-    public void adicionarAoEstoque(String nome, float preco, int qtde){
-        Produto p = new Produto(nome);
-        estoque.add(p);
-        setQtdeEstoque(qtde);
-    }
-    
-    }
-    /*
-        public void imprimeEstoque(){
-        for (int i = 0; i < estoque.size(); i++){
-            System.out.println(i + "  Produto: " + estoque.get(i).getNome() + "  |  " + qtdeEstoque + " unidades.");
-        
+public abstract class Estoque {
 
-    /*  public boolean temEstoque(Produto p, int qtde) {
-            Item item = procurarProduto(p);
-            return qtde <= item.getQuantidade();
-    }   
-       
-        public void retiradaProduto(Produto p, int qtde){
-            Item item = procuraProduto(p);
-            item.incQuantidade(qtde);
+    Map<Produto, Integer> estoque = new HashMap<>();
+
+    public Estoque() {
     }
     
-        public void entradaProduto(Produto p, int qtde){
-            Item item = procuraProduto(p);
-            item.decQuantidade(qtde);
-    }
+    void
     
-        private Item procuraProduto(Produto p);
-            >>BUSCA BINÁRIA<<
-    */
-    
+}

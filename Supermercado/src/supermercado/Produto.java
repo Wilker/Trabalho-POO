@@ -1,18 +1,45 @@
 package supermercado;
 
-public abstract class Produto {
-    private String nome;
-    private float preco;
-   
-public Produto(String Nome){
-    nome= Nome;
-}
+import java.util.Objects;
 
-    float precoUnitario(){
+public abstract class Produto {
+    protected String nome;
+    protected int preco;
+
+    public int getPreco() {
         return preco;
     }
 
-    String getNome() {
+    public Produto(String nome, int preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    @Override
+    public int hashCode() {
+        return nome.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Produto other = (Produto) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
+    }
+
+    public String getNome() {
         return nome;
     }
+
 }
