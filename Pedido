@@ -1,0 +1,35 @@
+package supermercado;
+
+import java.util.ArrayList;
+
+public class Pedido {
+    private int codigo;
+    ArrayList<Item> itens;
+    Cliente cliente;
+    
+    Pedido(ArrayList<Item> array, Cliente clientePedido){
+        codigo = (int) ((Math.random())+(Math.random())*100); //Não soube gerar um código de outro jeito.
+        cliente = clientePedido;
+        itens = array;
+    }
+    
+    float precoTotal(){ //Retorna o preço total do pedido
+        float soma = 0;
+        for (Item iten : itens) {
+            soma = iten.subtotal() + soma;
+        }
+        return soma;
+    }
+    
+    public void imprimeVenda(){ //Imprime a venda
+        int i = 0;
+        System.out.println("Pedido: " + codigo);
+        System.out.println("Cliente: " + cliente.getNome());
+        System.out.println("Item    Produto   Qtde  Subtotal");
+        for (Item iten : itens) {
+            i++; 
+            System.out.println(" " + i + "      " + iten.p.getNome() + "    " + iten.getQtde() + "   R$" + iten.subtotal());
+        }
+        System.out.println("Preço total: R$" + precoTotal());
+    }
+}
