@@ -20,7 +20,7 @@ public class Estoque {
     }
     
     public void adicionarAoEstoque(String nome, float preco, int qtde){
-        Produto p = new Produto(nome, preco);
+        Produto p = new Produto(nome);
         estoque.add(p);
         setQtdeEstoque(qtde);
     }

@@ -1,12 +1,11 @@
 package supermercado;
 
-public class Produto {
+public abstract class Produto {
     private String nome;
     private float preco;
    
-public Produto(String Nome, float Preco){
+public Produto(String Nome){
     nome= Nome;
-    preco= Preco;
 }
 
     float precoUnitario(){
