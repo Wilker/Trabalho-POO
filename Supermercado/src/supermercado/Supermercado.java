@@ -4,23 +4,29 @@ import java.util.ArrayList;
 
 public class Supermercado {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Estoque e = new Estoque();
+        Gerente gerente = new Gerente();
+        gerente.acessoAoEstoque(e);
+        gerente.controle.cadastraProduto("Morango", (float) 0.5);
+        gerente.controle.       
+        ControleEstoque.cadastraProduto("Morango", (float) 0.5);
+        ControleEstoque.adicionaAoEstoque(e., quantidade);
         e.adicionarAoEstoque("Morango", (float) 0.5, 20);
         e.adicionarAoEstoque("Pêra", (float) 0.75, 13);
         e.adicionarAoEstoque("Banana", (float) 1.5, 5);
         e.adicionarAoEstoque("Uva", (float) 2.0, 10);
         
-        Caixa caixa1 = new Caixa(1);
-        Caixa caixa2 = new Caixa(2);
-        Caixa caixa3 = new Caixa(3);
+        Caixa caixa1 = new Caixa(1, e);
+        Caixa caixa2 = new Caixa(2, e);
+        Caixa caixa3 = new Caixa(3, e);
         
         Funcionario funcionario1 = new Funcionario();
         
         Cliente cliente = new Cliente ("Fabricio", "Niteroi");
         Cliente cliente1 = new Cliente ("Caio", "Niteroi");
         
-        cliente.adicionarAoCarrinho(e.estoque.get(0),5);
+        cliente.adicionarAoCarrinho(e.get(0),5);
         cliente.adicionarAoCarrinho(e.estoque.get(1),3);
         cliente.adicionarAoCarrinho(e.estoque.get(2),2);
         cliente.adicionarAoCarrinho(e.estoque.get(3),4);

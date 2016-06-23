@@ -11,5 +11,12 @@ package supermercado;
  */
 public class Gerente extends Funcionario{
     Estoque estoque;
+    ControleEstoque controle;
+    
+    
+    void acessoAoEstoque(Estoque estoque){
+        this.estoque = estoque;
+        ControleEstoque controle = new ControleEstoque(estoque);
+        this.controle = controle;
     }
 }
