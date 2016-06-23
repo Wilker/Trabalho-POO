@@ -16,7 +16,11 @@ public class ControleEstoque {
     /**
      * Estoque é estático assumindo que há apenas um estoque.
      */
-    private static Estoque estoque;
+    private Estoque estoque;
+    
+    ControleEstoque(Estoque estoque){
+        this.estoque = estoque;
+    }
 
     /**
      * Recebe um produto e um valor e o cadastra no estoque.
@@ -24,7 +28,7 @@ public class ControleEstoque {
      * @param nome
      * @param preco
      */
-    public static void cadastraProduto(String nome, float preco) throws Exception {
+    public void cadastraProduto(String nome, float preco) throws Exception {
         if (Valida.validaNome(nome) && Valida.validaPreco(preco)) {
             //TODO definir se serão as classes ProdutoQuilo e ProtudoUnidade que serão usadas
             Produto novo = new Produto(nome, preco);
@@ -34,7 +38,7 @@ public class ControleEstoque {
         }
     }
 
-    public static void adicionaAoEstoque(Produto produto, int quantidade) throws Exception {
+    public void adicionaAoEstoque(Produto produto, int quantidade) throws Exception {
         if (Valida.quantidade(quantidade) && produto != null) {
             estoque.insereNoEstoque(produto, quantidade);
         }else{

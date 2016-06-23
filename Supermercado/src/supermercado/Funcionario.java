@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Funcionario {
-    private String nomeFuncionario;
-    private String senhaFuncionario;
-    private int idFuncionario;
+    protected String nomeFuncionario;
+    protected String senhaFuncionario;
+    protected int idFuncionario;
     
     Funcionario (){
         System.out.println("Cadastrando novo funcionário...");
@@ -23,7 +23,9 @@ class Funcionario {
         System.out.println("");
     }
     
-    public void darBaixa(ArrayList<ItemCarrinho> carrinho){
-        //TODO implementar Estoque para dar baixa dos produtos
+    public String getNome(){
+        return nomeFuncionario;
     }
+    
+    
 }

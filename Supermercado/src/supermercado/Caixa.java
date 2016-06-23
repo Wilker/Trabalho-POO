@@ -1,5 +1,6 @@
 package supermercado;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Caixa {
@@ -7,10 +8,12 @@ public class Caixa {
     Funcionario funcionario;
     private float dinheiroEmCaixa;
     Scanner teclado = new Scanner(System.in);
+    Estoque estoque;
     
-    Caixa(int numero){
+    Caixa(int numero, Estoque estoque){
         this.numeroCaixa = numero;
         dinheiroEmCaixa = 150;
+        this.estoque = estoque;
     }
     
     //Método Troco recebe o dinheiro a ser pago de algum pedido e retorna o troco.
@@ -37,6 +40,7 @@ public class Caixa {
         Pedido pedido = new Pedido(cliente.carrinho, cliente); //Instancia o pedido referente ao carrinho do cliente.
         
         pedido.imprimeVenda(); //Imprime o relatório completo da venda.
+        System.out.println("Funcionário: " + funcionario.getNome() + "; Caixa: " + numeroCaixa);
         System.out.println("");
         System.out.println("Qual a forma de pagamento?");
         System.out.println("1. Dinheiro");
@@ -56,7 +60,7 @@ public class Caixa {
                 return;
             }
             if (troco1 < pagamento1.getValor()){
-                //funcionario.darBaixa(cliente.carrinho); 
+                estoque.darBaixa(cliente.carrinho); 
                 System.out.println("Troco: R$" + troco1);
                 System.out.println("Compra efetuada com sucesso!");
                 System.out.println("");
@@ -66,7 +70,7 @@ public class Caixa {
         if (opcao == 2){
             Pagamento pagamento2 = new PagamentoCartao(true);
             float troco2 = 0;
-            //funcionario.darBaixa(cliente.carrinho); 
+            estoque.darBaixa(cliente.carrinho); 
             System.out.println("Troco: R$" + troco2);
             System.out.println("Compra efetuada com sucesso!");
             System.out.println("");

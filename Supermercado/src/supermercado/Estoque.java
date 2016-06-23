@@ -20,8 +20,8 @@ public class Estoque {
      * @return retorna a quantidade em estoque e -1 caso o produto não exista no
      * estoque
      */
-    protected int verificaQtdDisponivel(Produto produto) {
-        return estoque.getOrDefault(produto, -1);
+    protected Integer verificaQtdDisponivel(Produto produto) {
+        return estoque.get(produto);
     }
 
     /**
@@ -36,5 +36,15 @@ public class Estoque {
     
     protected void insereNoEstoque(Produto produto, int quantidade){
         estoque.put(produto, quantidade);
+    }
+    
+    public void darBaixa(ArrayList<ItemCarrinho> carrinho){
+        int quantidade;
+        for (int i = 0; i < carrinho.size(); i++){
+            quantidade = carrinho.get(i).getQtd();
+            int novaQuantidade = estoque.get(carrinho.get(i).getQtd()) - quantidade;
+            estoque.remove(carrinho.get(i).getProduto());
+            estoque.put(carrinho.get(i).getProduto(), novaQuantidade);
+        }
     }
 }
