@@ -7,11 +7,13 @@ public class Pedido {
     private int codigo;
     ArrayList<ItemCarrinho> itens;
     Cliente cliente;
+    Caixa caixa;
 
-    Pedido(ArrayList<ItemCarrinho> array, Cliente clientePedido) {
+    Pedido(ArrayList<ItemCarrinho> array, Cliente clientePedido, Caixa caixa) {
         codigo = (int) ((Math.random()) + (Math.random()) * 100);
         cliente = clientePedido;
         itens = array;
+        this.caixa = caixa;
     }
 
     float precoTotal() {
@@ -24,6 +26,8 @@ public class Pedido {
 
     public void imprimeVenda() {
         int i = 0;
+        System.out.println("");
+        System.out.println("Funcionário: " + caixa.funcionario.getNome() + "; Caixa: " + caixa.getNumeroCaixa());
         System.out.println("Pedido: " + codigo);
         System.out.println("Cliente: " + cliente.getNome());
         System.out.println("Item    Produto   Qtde  Subtotal");

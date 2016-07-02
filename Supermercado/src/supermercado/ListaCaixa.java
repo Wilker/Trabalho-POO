@@ -5,14 +5,15 @@
  */
 package supermercado;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author wilker
+ * @author Custom
  */
-public class ProdutoQuilo extends Produto {
-
-    public ProdutoQuilo(String nome, float preco) {
-        super(nome, preco);
-    }
-
+public class ListaCaixa {
+    static ArrayList<Caixa> caixas = new ArrayList<>();
+    
+    
+    
 }

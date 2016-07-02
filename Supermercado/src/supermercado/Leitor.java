@@ -7,12 +7,10 @@ package supermercado;
 
 /**
  *
- * @author wilker
+ * @author Custom
  */
-public class ProdutoQuilo extends Produto {
-
-    public ProdutoQuilo(String nome, float preco) {
-        super(nome, preco);
+public class Leitor {
+    static float checarPreco(Produto p){
+        return p.getPreco();
     }
-
 }

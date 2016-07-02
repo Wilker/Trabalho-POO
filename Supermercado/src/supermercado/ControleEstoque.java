@@ -16,10 +16,10 @@ public class ControleEstoque {
     /**
      * Estoque é estático assumindo que há apenas um estoque.
      */
-    private Estoque estoque;
+    private Estoque controle;
     
     ControleEstoque(Estoque estoque){
-        this.estoque = estoque;
+        controle = estoque;
     }
 
     /**
@@ -32,19 +32,30 @@ public class ControleEstoque {
         if (Valida.validaNome(nome) && Valida.validaPreco(preco)) {
             //TODO definir se serão as classes ProdutoQuilo e ProtudoUnidade que serão usadas
             Produto novo = new Produto(nome, preco);
-            estoque.insereNoEstoque(novo, 0);
+            controle.cadastraNoEstoque(novo, 0);
         } else {
             throw new Exception("nome ou preço inválidos");
         }
     }
 
-    public void adicionaAoEstoque(Produto produto, int quantidade) throws Exception {
-        if (Valida.quantidade(quantidade) && produto != null) {
-            estoque.insereNoEstoque(produto, quantidade);
+    public void adicionaAoEstoque(String nome, int quantidade) throws Exception {
+        if (Valida.quantidade(quantidade) && Valida.validaNome(nome)) {
+            for (ProdutoEstoque estoque : controle.estoque) {
+                if (nome.equalsIgnoreCase(estoque.produto.nome)) {
+                    if (estoque.getQuantidadeInicial() == 0){
+                        estoque.setQuantidadeInicial(quantidade);
+                    }
+                    estoque.setQuantidadeEstoque(estoque.getQuantidadeEstoque() 
+                                                    + quantidade);
+                    break;
+                }
+            }
         }else{
             throw new Exception("Protudo ou quantidade inválidos");
         }
     }
 
-    //TODO implementar função de dar baixa no estoque ao fim da venda.
+    public void emitirRelatorioEstoque(){
+        controle.relatorioEstoque();
+    }   
 }
