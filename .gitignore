@@ -1,2 +1,7 @@
 /Supermercado/nbproject/private/
 /Supermercado/build/
+/Supermercado/dist/
+!Supermercado/nbproject/project.properties
+!Supermercado/nbproject/project.xml
+
+*.class
