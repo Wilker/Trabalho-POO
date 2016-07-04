@@ -14,11 +14,11 @@ package supermercado;
 public class ControleEstoque {
 
     /**
-     * Estoque é estático assumindo que há apenas um estoque.
+     * Estoque é̶ era estático assumindo que há apenas um estoque.
      */
     private Estoque controle;
-    
-    ControleEstoque(Estoque estoque){
+
+    ControleEstoque(Estoque estoque) {
         controle = estoque;
     }
 
@@ -40,22 +40,13 @@ public class ControleEstoque {
 
     public void adicionaAoEstoque(String nome, int quantidade) throws Exception {
         if (Valida.quantidade(quantidade) && Valida.validaNome(nome)) {
-            for (ProdutoEstoque estoque : controle.estoque) {
-                if (nome.equalsIgnoreCase(estoque.produto.nome)) {
-                    if (estoque.getQuantidadeInicial() == 0){
-                        estoque.setQuantidadeInicial(quantidade);
-                    }
-                    estoque.setQuantidadeEstoque(estoque.getQuantidadeEstoque() 
-                                                    + quantidade);
-                    break;
-                }
-            }
-        }else{
+            controle.adicionaAoEstoque(nome, quantidade);
+        } else {
             throw new Exception("Protudo ou quantidade inválidos");
         }
     }
 
-    public void emitirRelatorioEstoque(){
+    public void emitirRelatorioEstoque() {
         controle.relatorioEstoque();
-    }   
+    }
 }

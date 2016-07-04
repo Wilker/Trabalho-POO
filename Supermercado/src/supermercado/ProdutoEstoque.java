@@ -5,6 +5,8 @@
  */
 package supermercado;
 
+import java.util.Objects;
+
 /**
  *
  * @author Custom
@@ -39,4 +41,23 @@ public class ProdutoEstoque {
     public int getQuantidadeInicial(){
         return quantidadeInicial;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProdutoEstoque other = (ProdutoEstoque) obj;
+        if (!Objects.equals(this.produto, other.produto)) {
+            return false;
+        }
+        return true;
+    }
+    
 }
