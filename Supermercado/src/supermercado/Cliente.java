@@ -1,25 +1,25 @@
 package supermercado;
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cliente {
+
     private String nome;
     private String email;
     private long cpf;
     ArrayList<ItemCarrinho> carrinho = new Carrinho().getCarrinho();
     private String login;
     private String senha;
-    
-    Cliente(){
+
+    Cliente() {
         cadastrar();
     }
 
     String getNome() {
         return nome;
     }
-    
+
     String getLogin() {
         return login;
     }
@@ -27,120 +27,111 @@ public class Cliente {
     String getSenha() {
         return senha;
     }
-    
+
     Scanner teclado = new Scanner(System.in);
-    
-    public void adicionarAoCarrinho(){
-        if (carrinho == null){
+
+    public void adicionarAoCarrinho() {
+
+        if (carrinho == null) {
+
+            //FIXME se carrinho for nulo faz quase tudo que faz se não for nulo. Fixed
             ArrayList<ItemCarrinho> compras = new ArrayList<>();
-            Estoque.imprimeEstoque();
-            System.out.println("Informe o nome do produto: ");
-            ProdutoEstoque p = Estoque.pegaProduto(teclado.next());
-            System.out.println("Quantidade: ");
-            int quantidade  = teclado.nextInt();
-            compras.add(new ItemCarrinho(p, quantidade));
             carrinho = compras;
         }
-        else{
-            Estoque.imprimeEstoque();
-            System.out.println("Informe o nome do produto: ");
-            ProdutoEstoque p = Estoque.pegaProduto(teclado.next());
-            System.out.println("Quantidade: ");
-            int quantidade  = teclado.nextInt();
-            carrinho.add(new ItemCarrinho(p, quantidade));
-            carrinho = this.carrinho;
-        }
-        
+        Estoque.imprimeEstoque();
+        System.out.println("Informe o nome do produto: ");
+        ProdutoEstoque p = Estoque.pegaProduto(teclado.next());
+        System.out.println("Quantidade: ");
+        int quantidade = teclado.nextInt();
+        carrinho.add(new ItemCarrinho(p, quantidade));
+
+        //FIXME remover leitura de teclado de método adicionarAoCarrinho Ele deve apenas colocar um item no carrinho.
         System.out.println("Continuar comprando?");
         System.out.println("1. Sim");
         System.out.println("2. Não");
-        
         int opcao = teclado.nextInt();
-        
-        if (opcao == 1){ 
+
+        if (opcao == 1) {
             adicionarAoCarrinho();
-        }
-        else if (opcao == 2)
-                return; 
-        else{ 
+        } else if (opcao == 2) {
+            return;
+        } else {
             System.out.println("Opção inválida. Deseja continuar comprando?");
-            opcao = teclado.nextInt();
+            opcao = teclado.nextInt(); //FIXME neste ponto ele lê porém não é utilizado o valor lido
         }
     }
-    
-    public void removerDoCarrinho(){
+
+    //FIXME refatorar aqui, método remover deve apenas remover o item do carrinho. Não efetuar leitura e escrita na tela.
+    public void removerDoCarrinho() {
         if (carrinho == null) {
             System.out.println("Carrinho vazio.");
-            return;
-        }
-        else{
+        } else {
             System.out.println("Informe o nome do produto: ");
             ProdutoEstoque p = Estoque.pegaProduto(teclado.next());
             carrinho.remove(carrinho.indexOf(p));
             System.out.println("Removido com sucesso!");
         }
     }
-    
-    
-    public void irAoCaixa(int opcao){
-        if (opcao == 1){
-            ListaCaixa.caixas.get(opcao-1).receberClienteNoCaixa(this);
-        }
-        
-        else if (opcao == 2){
-            ListaCaixa.caixas.get(opcao-1).receberClienteNoCaixa(this);
-        }
-        
-        else if (opcao == 3){
-            ListaCaixa.caixas.get(opcao-1).receberClienteNoCaixa(this);
-        }
-        else{
-            System.out.println("Caixa inválido. Insira um válido: ");
-            irAoCaixa(teclado.nextInt());
+
+    public void irAoCaixa(int opcao) {
+        switch (opcao) {
+            case 1:
+                ListaCaixa.caixas.get(opcao - 1).receberClienteNoCaixa(this);
+                break;
+            case 2:
+                ListaCaixa.caixas.get(opcao - 1).receberClienteNoCaixa(this);
+                break;
+            case 3:
+                ListaCaixa.caixas.get(opcao - 1).receberClienteNoCaixa(this);
+                break;
+            default:
+                System.out.println("Caixa inválido. Insira um válido: ");
+                irAoCaixa(teclado.nextInt());
+                break;
         }
     }
 
-    public void cadastrar(){
+    public void cadastrar() {
         System.out.println("Informe seu nome");
         nome = teclado.nextLine();
-        
+
         System.out.println("Informe seu email");
         email = teclado.next();
-        
+
         System.out.println("Digite seu novo login: ");
         login = teclado.next();
         System.out.println("Login registrado!");
-        
+
         System.out.println("Digite sua nova senha: ");
         senha = teclado.next();
         System.out.println("Senha registrado!");
-        
-        while(login.equalsIgnoreCase("") || senha.equalsIgnoreCase("")){
-            if (login.equalsIgnoreCase("")){
+
+        while (login.equalsIgnoreCase("") || senha.equalsIgnoreCase("")) {
+            if (login.equalsIgnoreCase("")) {
                 System.out.println("Login não deve ser vazio. Insira um válido");
                 login = teclado.nextLine();
             }
-            if (senha.equalsIgnoreCase("")){
+            if (senha.equalsIgnoreCase("")) {
                 System.out.println("Senha não deve ser vazia. Insira uma válida");
                 senha = teclado.nextLine();
             }
         }
-        
+
         System.out.println("Digite seu CPF(sem traços): ");
         cpf = teclado.nextLong();
-        
+
         Login.banco.add(this);
-        
+
         System.out.println("Cadastrado com sucesso!");
         System.out.println("");
     }
-    
-     
+
+    //FIXME mover menu para uma classe de menu (classes de visão)
     public void menuPrincipal() {
         int opcao;
-        do{
+        do {
             System.out.println("");
-            System.out.println("Bem vindo, "+ nome);
+            System.out.println("Bem vindo, " + nome);
             System.out.println("O que deseja fazer?");
             System.out.println("1. Adicionar ao carrinho");
             System.out.println("2. Remover do carrinho");
@@ -150,36 +141,36 @@ public class Cliente {
             System.out.println("Opcao:");
             opcao = teclado.nextInt();
             System.out.println("");
-            
-            switch(opcao){
-            case 1:
-                adicionarAoCarrinho();
-                break;
-                
-            case 2:
-                removerDoCarrinho();
-                break;
-            
-            case 3:
-                System.out.println("Informe o nome do produto: ");
-                Produto p = Estoque.pegaProduto(teclado.next()).getProdutoEstoque();
-                System.out.println("R$"+Leitor.checarPreco(p));
-                break;
-                
-            case 4:
-                System.out.println("Informe o caixa que deseja ir: ");
-                System.out.println("(1)  (2)  (3)");
-                irAoCaixa(teclado.nextInt());
-                break;
-            
-            default:
-                if(opcao == 0){
-                    System.out.println("Logout feito com sucesso.");
-                }else{
-                System.out.println("Opção inválida.");
-                System.out.println("");
-                }
+
+            switch (opcao) {
+                case 1:
+                    adicionarAoCarrinho();
+                    break;
+
+                case 2:
+                    removerDoCarrinho();
+                    break;
+
+                case 3:
+                    System.out.println("Informe o nome do produto: ");
+                    Produto p = Estoque.pegaProduto(teclado.next()).getProdutoEstoque();
+                    System.out.println("R$" + Leitor.checarPreco(p));
+                    break;
+
+                case 4:
+                    System.out.println("Informe o caixa que deseja ir: ");
+                    System.out.println("(1)  (2)  (3)");
+                    irAoCaixa(teclado.nextInt());
+                    break;
+
+                default:
+                    if (opcao == 0) {
+                        System.out.println("Logout feito com sucesso.");
+                    } else {
+                        System.out.println("Opção inválida.");
+                        System.out.println("");
+                    }
             }
-        } while(opcao != 0);
+        } while (opcao != 0);
     }
 }
