@@ -5,6 +5,7 @@
  */
 package supermercado;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,16 +14,16 @@ import java.util.List;
  */
 public class FuncionariosBD {
 
-    private static  int id;
-    static List<Funcionario> db;
+    private static int id;
+    static List<Funcionario> db = new ArrayList<>();
 
     public FuncionariosBD() {
         FuncionariosBD.id = 1;
     }
 
-     static void insereFuncionario(Funcionario funcionario){
+    static void insereFuncionario(Funcionario funcionario) {
         funcionario.idFuncionario = id;
         db.add(funcionario);
-        id++; 
-   }
+        id++;
+    }
 }
