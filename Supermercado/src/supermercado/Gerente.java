@@ -21,10 +21,10 @@ public class Gerente extends Funcionario{
    
     
     void acessoAoEstoque(Estoque estoque){
-        ControleEstoque controle = new ControleEstoque(estoque);
-        this.controle = controle;
+        ControleEstoque crtEstq = new ControleEstoque(estoque);
+        this.controle = crtEstq;
     }
-    
+    //FIXME mover menu para classe de Menu!
     void menuPrincipal() throws Exception {
         int opcao;
         Scanner teclado = new Scanner(System.in);
