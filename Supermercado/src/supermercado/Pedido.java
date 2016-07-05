@@ -1,15 +1,18 @@
 package supermercado;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Pedido {
 
-    private int codigo;
+    private final Date data;
+    private final int codigo;
     ArrayList<ItemCarrinho> itens;
     Cliente cliente;
     Caixa caixa;
 
     Pedido(ArrayList<ItemCarrinho> array, Cliente clientePedido, Caixa caixa) {
+        data = new Date();
         codigo = (int) ((Math.random()) + (Math.random()) * 100);
         cliente = clientePedido;
         itens = array;
@@ -26,7 +29,7 @@ public class Pedido {
 
     public void imprimeVenda() {
         int i = 0;
-        System.out.println("");
+        System.out.println(data);
         System.out.println("Funcionário: " + caixa.funcionario.getNome() + "; Caixa: " + caixa.getNumeroCaixa());
         System.out.println("Pedido: " + codigo);
         System.out.println("Cliente: " + cliente.getNome());
