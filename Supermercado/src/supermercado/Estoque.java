@@ -42,10 +42,10 @@ public class Estoque {
         return false;
     }
 
-    static ProdutoEstoque pegaProduto(String nome) {
+    static Produto pegaProduto(String nome) {
         for (int i = 0; i < estoque.size(); i++) {
             if (nome.equalsIgnoreCase(estoque.get(i).getProdutoEstoque().getNome())) {
-                return estoque.get(i);
+                return estoque.get(i).produto;
             }
         }
         System.out.println("Produto não encontrado");
@@ -71,11 +71,11 @@ public class Estoque {
     public void relatorioEstoque() {
         System.out.println("RELATÓRIO DE ESTOQUE:");
         System.out.println("");
-        for (ProdutoEstoque estoque1 : estoque) {
-            System.out.println("Produto: " + estoque1.produto.getNome());
-            System.out.println("Quantidade inicial: " + estoque1.getQuantidadeInicial());
-            System.out.println("Quantidade atual: " + estoque1.getQuantidadeEstoque());
-            System.out.println("Vendas: " + (estoque1.getQuantidadeInicial() - estoque1.getQuantidadeEstoque()));
+        for (ProdutoEstoque prodEsqt : estoque) {
+            System.out.println("Produto: " + prodEsqt.produto.getNome());
+            System.out.println("Quantidade inicial: " + prodEsqt.getQuantidadeInicial());
+            System.out.println("Quantidade atual: " + prodEsqt.getQuantidadeEstoque());
+            System.out.println("Vendas: " + (prodEsqt.getQuantidadeInicial() - prodEsqt.getQuantidadeEstoque()));
             System.out.println("");
         }
     }
