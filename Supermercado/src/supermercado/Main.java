@@ -1,9 +1,8 @@
 package supermercado;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Supermercado {
+public class Main {
 
     public static void main(String[] args) throws Exception {
         Funcionario f1 = new Funcionario("João");
@@ -11,10 +10,10 @@ public class Supermercado {
         Funcionario f3 = new Funcionario("José");
         Funcionario f4 = new Funcionario("Pedro");
         Funcionario f5 = new Funcionario("Ludimila");
-        
-        Caixa caixa1 = new Caixa(1,f2);
-        Caixa caixa2 = new Caixa(2,f4);
-        Caixa caixa3 = new Caixa(3,f3);
+
+        Caixa caixa1 = new Caixa(1, f2);
+        Caixa caixa2 = new Caixa(2, f4);
+        Caixa caixa3 = new Caixa(3, f3);
         Scanner teclado = new Scanner(System.in);
         Estoque e = new Estoque();
         Gerente gerente = new Gerente("Fábio");
@@ -28,9 +27,9 @@ public class Supermercado {
         gerente.controle.adicionaAoEstoque("Banana", 19);
         gerente.controle.cadastraProduto("Uva", (float) 2.0);
         gerente.controle.adicionaAoEstoque("Uva", 14);
-        
+
         int opcao;
-        do{
+        do {
             System.out.println("O que deseja fazer?");
             System.out.println("1. Login como Cliente");
             System.out.println("2. Cadastrar-se");
@@ -39,27 +38,27 @@ public class Supermercado {
             System.out.println("Opcao:");
             opcao = teclado.nextInt();
             System.out.println("");
-            
-            switch(opcao){
-            case 1:
-                Login.loginCliente().menuPrincipal();
-                break;
-                
-            case 2:
-                Cliente user1 = new Cliente();
-                break;
-                
-            case 3:
-                Login.loginGerente(gerente,e).menuPrincipal();
-                break;
-            default:
-                if(opcao == 0){
-                    System.out.println("Obrigado por usar nosso sistema");
-                }else{
-                System.out.println("Opção inválida.");
-                System.out.println("");
-                }
+
+            switch (opcao) {
+                case 1:
+                    Login.loginCliente().menuPrincipal();
+                    break;
+
+                case 2:
+                    Cliente user1 = new Cliente();
+                    break;
+
+                case 3:
+                    Login.loginGerente(gerente, e).menuPrincipal();
+                    break;
+                default:
+                    if (opcao == 0) {
+                        System.out.println("Obrigado por usar nosso sistema");
+                    } else {
+                        System.out.println("Opção inválida.");
+                        System.out.println("");
+                    }
             }
-        } while(opcao != 0);
+        } while (opcao != 0);
     }
 }

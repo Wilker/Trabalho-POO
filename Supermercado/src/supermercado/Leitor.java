@@ -10,7 +10,8 @@ package supermercado;
  * @author Custom
  */
 public class Leitor {
-    static float checarPreco(Produto p){
+
+    float checarPreco(Produto p) {
         return p.getPreco();
     }
 }
