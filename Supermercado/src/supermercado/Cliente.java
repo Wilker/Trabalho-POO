@@ -8,7 +8,7 @@ public class Cliente {
     Scanner teclado = new Scanner(System.in);
     private String nome;
     private String email;
-    private long cpf;
+    private int cpf;
     Carrinho carrinho;
     private String login;
     private String senha;
@@ -103,40 +103,40 @@ public class Cliente {
     }
 
     //FIXME Mover para classe de controle de cliente
-    public void cadastrar() {
-        System.out.println("Informe seu nome");
-        nome = teclado.nextLine();
-
-        System.out.println("Informe seu email");
-        email = teclado.next();
-
-        System.out.println("Digite seu novo login: ");
-        login = teclado.next();
-        System.out.println("Login registrado!");
-
-        System.out.println("Digite sua nova senha: ");
-        senha = teclado.next();
-        System.out.println("Senha registrado!");
-
-        while (login.equalsIgnoreCase("") || senha.equalsIgnoreCase("")) {
-            if (login.equalsIgnoreCase("")) {
-                System.out.println("Login não deve ser vazio. Insira um válido");
-                login = teclado.nextLine();
-            }
-            if (senha.equalsIgnoreCase("")) {
-                System.out.println("Senha não deve ser vazia. Insira uma válida");
-                senha = teclado.nextLine();
-            }
-        }
-
-        System.out.println("Digite seu CPF(sem traços): ");
-        cpf = teclado.nextLong();
-
-        Login.banco.add(this);
-
-        System.out.println("Cadastrado com sucesso!");
-        System.out.println("");
-    }
+//    public void cadastrar() {
+//        System.out.println("Informe seu nome");
+//        nome = teclado.nextLine();
+//
+//        System.out.println("Informe seu email");
+//        email = teclado.next();
+//
+//        System.out.println("Digite seu novo login: ");
+//        login = teclado.next();
+//        System.out.println("Login registrado!");
+//
+//        System.out.println("Digite sua nova senha: ");
+//        senha = teclado.next();
+//        System.out.println("Senha registrado!");
+//
+//        while (login.equalsIgnoreCase("") || senha.equalsIgnoreCase("")) {
+//            if (login.equalsIgnoreCase("")) {
+//                System.out.println("Login não deve ser vazio. Insira um válido");
+//                login = teclado.nextLine();
+//            }
+//            if (senha.equalsIgnoreCase("")) {
+//                System.out.println("Senha não deve ser vazia. Insira uma válida");
+//                senha = teclado.nextLine();
+//            }
+//        }
+//
+//        System.out.println("Digite seu CPF(sem traços): ");
+//        cpf = teclado.nextLong();
+//
+//        Login.banco.add(this);
+//
+//        System.out.println("Cadastrado com sucesso!");
+//        System.out.println("");
+//    }
 
     //FIXME mover menu para uma classe de menu (classes de visão)
 //    public void menuPrincipal() {
