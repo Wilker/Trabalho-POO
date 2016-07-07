@@ -42,7 +42,7 @@ public class Estoque {
         return false;
     }
 
-    static Produto pegaProduto(String nome) {
+  public  static Produto pegaProduto(String nome) {
         for (int i = 0; i < estoque.size(); i++) {
             if (nome.equalsIgnoreCase(estoque.get(i).getProdutoEstoque().getNome())) {
                 return estoque.get(i).produto;

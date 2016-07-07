@@ -22,10 +22,18 @@ public class Carrinho {
         }
     }
 
-    
     void listaProdutosNoCarrinho() {
         for (ItemCarrinho itemCarrinho : listaCompra) {
             System.out.println(itemCarrinho.getProduto().toString());
         }
+    }
+
+    Produto getProdutoCarrinho(String nome) {
+        for (ItemCarrinho itemCarrinho : listaCompra) {
+            if (itemCarrinho.getProduto().getNome().contains(nome)) {
+                return itemCarrinho.getProduto();
+            }
+        }
+        return null;
     }
 }
