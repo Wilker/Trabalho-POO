@@ -1,6 +1,5 @@
 package supermercado;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cliente {
@@ -29,7 +28,6 @@ public class Cliente {
         return senha;
     }
 
-    //TODO adicionar ao carrinho deve adicionar um produto.
     public void adicionarAoCarrinho(Produto produto, int qtd) {
         if (carrinho == null) {
             inicializaCarrinho();
@@ -37,7 +35,6 @@ public class Cliente {
         carrinho.adicionarAoCarrinho(produto, qtd);
     }
 
-    //FIXME refatorar aqui, método remover deve apenas remover o item do carrinho. Não efetuar leitura e escrita na tela.
     public void removerDoCarrinho(Produto produto) {
         if (carrinho == null || carrinho.getCarrinho().isEmpty()) {
             System.out.println("Carrinho vazio.");
@@ -65,8 +62,7 @@ public class Cliente {
         }
     }
 
-    public Produto buscaProduto() {
-        Estoque.imprimeEstoque();
+    public Produto buscaProduto(String nome) {
         Produto produto = Estoque.pegaProduto(nome);
         return produto;
     }
@@ -82,4 +78,13 @@ public class Cliente {
     public Produto pegaItemDoCarrinho(String nome) {
         return carrinho.getProdutoCarrinho(nome);
     }
+
+    public Cliente(String nome, String email, String login, String senha, int cpf) {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.login = login;
+        this.senha = senha;
+    }
+
 }

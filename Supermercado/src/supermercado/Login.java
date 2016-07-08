@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author Custom
  */
 public class Login {
-    static ArrayList<Cliente> banco = new ArrayList<Cliente>();
+    public static ArrayList<Cliente> banco = new ArrayList<Cliente>();
     
     public static Cliente loginCliente(){ //Retorna a conta a ser manipulada no menuPrincipal()
         Cliente cliente = null;

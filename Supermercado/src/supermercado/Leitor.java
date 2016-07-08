@@ -11,7 +11,7 @@ package supermercado;
  */
 public class Leitor {
 
-    float checarPreco(Produto p) {
+    public float checarPreco(Produto p) {
         return p.getPreco();
     }
 }

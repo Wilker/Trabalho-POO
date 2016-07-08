@@ -2,7 +2,6 @@ package supermercado;
 
 import java.util.ArrayList;
 
-
 public class Estoque {
 
     static ArrayList<ProdutoEstoque> estoque = new ArrayList<>();
@@ -42,7 +41,7 @@ public class Estoque {
         return false;
     }
 
-  public  static Produto pegaProduto(String nome) {
+    public static Produto pegaProduto(String nome) {
         for (int i = 0; i < estoque.size(); i++) {
             if (nome.equalsIgnoreCase(estoque.get(i).getProdutoEstoque().getNome())) {
                 return estoque.get(i).produto;
@@ -80,7 +79,7 @@ public class Estoque {
         }
     }
 
-    static void imprimeEstoque() {
+    public static void imprimeEstoque() {
         System.out.println("Produtos à venda");
         System.out.println("");
         for (int i = 0; i < estoque.size(); i++) {

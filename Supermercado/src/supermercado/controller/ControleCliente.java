@@ -8,6 +8,7 @@ package supermercado.controller;
 import java.util.Scanner;
 import supermercado.Cliente;
 import supermercado.Estoque;
+import supermercado.Leitor;
 import supermercado.Login;
 import supermercado.Produto;
 import supermercado.Valida;
@@ -21,83 +22,63 @@ public class ControleCliente {
 
     VisãoCliente visãoCliente = new VisãoCliente();
     Scanner teclado = new Scanner(System.in);
+    Leitor leitor = new Leitor();
     Cliente cliente;
 
+    //TODO Mover para Classe de Visão
     public void cadastrar() {
-        String nome;
-        String email;
-        int cpf;
-        String login;
-        String senha;
-
+        String[] dadosCliente; //índices => 0 - nome, 1 - email, 2 - login, 3 - senha, 4 - CPF
         do {
-            System.out.println("Informe seu nome");
-            nome = teclado.nextLine();
-            System.out.println("Informe seu email");
-            email = teclado.next();
-
-            System.out.println("Digite seu novo login: ");
-            login = teclado.next();
-            System.out.println("Login registrado!");
-
-            System.out.println("Digite sua nova senha: ");
-            senha = teclado.next();
-            System.out.println("Senha registrado!");
-            if (Valida.validaNome(login) || Valida.validaSenha(senha)) {
-                System.out.println("Login ou senha vazios não são permitidos");
+            dadosCliente = visãoCliente.diálogoCadastro();
+            if (Valida.validaNome(dadosCliente[2]) || Valida.validaSenha(dadosCliente[3])) {
+                System.out.println("Login ou senha vazios não são permitidos");//Se for trocar pra interface gráfica depois é só chamar um JOptionPane aqui
             }
-        } while (Valida.validaNome(login) && Valida.validaSenha(senha));
-
-        System.out.println("Digite seu CPF(sem traços): ");
-        cpf = teclado.nextInt();
-
-        // Login.banco.add(this);
-        System.out.println("Cadastrado com sucesso!");
+        } while (Valida.validaNome(dadosCliente[2]) && Valida.validaSenha(dadosCliente[3]));
+//                                              0 - nome, 1 - email, 2 - login, 3 - senha, 4 - CPF
+        cliente = new Cliente(dadosCliente[0], dadosCliente[1], dadosCliente[2], dadosCliente[3], Integer.parseInt(dadosCliente[4]));
+        Login.banco.add(cliente);
+        System.out.println("Cadastrado com sucesso!");//Se for trocar pra interface gráfica depois é só chamar um JOptionPane aqui
         System.out.println("");
     }
 
     //TODO corrigir case 3 e 4
     public void menuCliente(Cliente cliente) {
-        VisãoCliente.menuPrincipal(this.cliente);
+        int opcao = visãoCliente.diálogoMenuPrincipal(this.cliente);
         Produto produto;
-        int opcao = teclado.nextInt();
+        String nomeProd;
         switch (opcao) {
+            case 0:
+                System.out.println("Logout feito com sucesso."); //FIXME opção de logout somente diz que fez logout mas não faz mais nada
             case 1:
-                produto = cliente.buscaProduto();
-                int qtd = visãoCliente.diálogoDeQuantidade(); //gambi aqui depois arrumo!
+                Estoque.imprimeEstoque();
+                nomeProd = visãoCliente.diálogoDeBuscaDeProduto();
+                produto = cliente.buscaProduto(nomeProd);
+                int qtd = visãoCliente.diálogoDeQuantidade();
                 cliente.adicionarAoCarrinho(produto, qtd);
                 break;
             case 2:
                 cliente.listaItensCarrinho();
-                String nome = visãoCliente.diálogoDeBuscaDeProduto();
-                produto = cliente.pegaItemDoCarrinho(nome);
+                nomeProd = visãoCliente.diálogoDeBuscaDeProduto();
+                produto = cliente.pegaItemDoCarrinho(nomeProd);
                 cliente.removerDoCarrinho(produto);
                 break;
             case 3:
-                System.out.println("Informe o nome do produto: ");
-                Produto p = Estoque.pegaProduto(teclado.next()).getProdutoEstoque();
-                System.out.println("R$" + Leitor.checarPreco(p)); //FIXME
+                nomeProd = visãoCliente.diálogoDeBuscaDeProduto();
+                produto = Estoque.pegaProduto(nomeProd);
+                visãoCliente.imprimeValorProduto(leitor.checarPreco(produto));
                 break;
-
             case 4:
-                System.out.println("Informe o caixa que deseja ir: ");
-                System.out.println("(1)  (2)  (3)");
-                irAoCaixa(teclado.nextInt());
+                int caixa = visãoCliente.diálogoDeIdaAoCaixa();
+                cliente.irAoCaixa(teclado.nextInt());
                 break;
-
             default:
-                if (opcao == 0) {
-                    System.out.println("Logout feito com sucesso.");
-                } else {
-                    System.out.println("Opção inválida.");
-                    System.out.println("");
-                }
+                System.out.println("Opção inválida.");//Se for trocar pra interface gráfica depois é só chamar um JOptionPane aqui
+                System.out.println("");//Se for trocar pra interface gráfica depois é só chamar um JOptionPane aqui
         }
-        while (opcao != 0);
     }
 
     public Produto pegaProdutoNoEstoque() {
         String nome = visãoCliente.diálogoDeBuscaDeProduto();
-        Estoque.pegaProduto(nome);
+        return Estoque.pegaProduto(nome);
     }
 }
