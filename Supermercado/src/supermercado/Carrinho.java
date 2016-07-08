@@ -10,21 +10,27 @@ public class Carrinho {
         return listaCompra;
     }
 
+    public Carrinho() {
+        this.listaCompra = new ArrayList<ItemCarrinho>();
+    }
+
     void adicionarAoCarrinho(Produto produto, int qtd) {
         listaCompra.add(new ItemCarrinho(produto, qtd));
     }
 
     void removerDoCarrinho(Produto produto) {
+        ArrayList arrayList = new ArrayList();
         for (ItemCarrinho itemCarrinho : listaCompra) {
-            if (itemCarrinho.getProduto().equals(this)) {
-                listaCompra.remove(itemCarrinho);
+            if (itemCarrinho.getProduto().equals(produto)) {
+                arrayList.add(itemCarrinho);
             }
         }
+        listaCompra.removeAll(arrayList);
     }
 
     void listaProdutosNoCarrinho() {
         for (ItemCarrinho itemCarrinho : listaCompra) {
-            System.out.println(itemCarrinho.getProduto().toString());
+            System.out.println(itemCarrinho.getProduto().toString() + " - " + itemCarrinho.getQtd() + "UN.");
         }
     }
 
@@ -36,4 +42,5 @@ public class Carrinho {
         }
         return null;
     }
+
 }

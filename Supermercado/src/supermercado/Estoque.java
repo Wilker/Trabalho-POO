@@ -62,7 +62,7 @@ public class Estoque {
             if (buscaProduto(carrinho.get(i).getProduto().getNome()) == true) {
                 quantidade = carrinho.get(i).getQtd();
                 int novaQuantidade = estoque.get(i).getQuantidadeEstoque() - quantidade;
-                pegaProduto(carrinho.get(i).getProduto().getNome()).setQuantidadeEstoque(novaQuantidade);
+              //  pegaProduto(carrinho.get(i).getProduto().getNome()).setQuantidadeEstoque(novaQuantidade);
             }
         }
     }

@@ -1,6 +1,7 @@
 package supermercado;
 
 import java.util.Scanner;
+import supermercado.controller.ControleCliente;
 
 public class Main {
 
@@ -41,10 +42,13 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    Login.loginCliente().menuPrincipal();
+                    ControleCliente controleCliente = new ControleCliente();
+                    controleCliente.menuCliente(Login.loginCliente());
                     break;
 
                 case 2:
+                    ControleCliente ctrlCliente = new ControleCliente();
+                    ctrlCliente.cadastrar();
                     Cliente user1 = new Cliente();
                     break;
 

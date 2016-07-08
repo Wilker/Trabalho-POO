@@ -13,7 +13,7 @@ public class Cliente {
     private String senha;
 
     Cliente() {
-        inicializaCarrinho();
+        //inicializaCarrinho();
     }
 
     public String getNome() {
@@ -72,7 +72,9 @@ public class Cliente {
     }
 
     public void listaItensCarrinho() {
-        this.carrinho.listaProdutosNoCarrinho();
+        if (carrinho != null) {
+            this.carrinho.listaProdutosNoCarrinho();
+        }
     }
 
     public Produto pegaItemDoCarrinho(String nome) {

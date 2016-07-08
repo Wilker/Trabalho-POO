@@ -43,4 +43,9 @@ public class Produto {
         return nome;
     }
 
+    @Override
+    public String toString() {
+        return "Produto{" + "nome=" + nome + ", preco=" + preco + '}';
+    }
+ 
 }

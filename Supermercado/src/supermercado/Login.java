@@ -21,7 +21,7 @@ public class Login {
         
         if (banco.isEmpty() == true ){
             System.out.println("Cadastre-se primeiro");
-            return null;
+            return null; //Vai dar NULLPointerException se entrar aqui
         }
         
         System.out.println("Login: ");
