@@ -2,21 +2,21 @@ package supermercado;
 
 public class ItemCarrinho {
 
-    private ProdutoEstoque produto;
+    private Produto produto;
     private int qtd;
-    private boolean tipo;
+//    private boolean tipo;
 
-    public ItemCarrinho(ProdutoEstoque produto, int qtde) {
+    public ItemCarrinho(Produto produto, int qtde) {
         this.produto = produto;
         this.qtd = qtde;
     }
 
     float subtotal() {
-        return this.qtd * produto.getProdutoEstoque().getPreco();
+        return this.qtd * produto.getPreco();
     }
 
     public Produto getProduto() {
-        return produto.getProdutoEstoque();
+        return produto;
     }
 
     public int getQtd() {

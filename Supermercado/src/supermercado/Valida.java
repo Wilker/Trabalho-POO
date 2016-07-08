@@ -38,4 +38,9 @@ public class Valida {
         }
         return true;
     }
+
+    //ValidaSenha chama validaNome pois os métodos de validação sãoo mesmos
+    public static boolean validaSenha(String senha) {
+        return validaNome(senha);
+    }
 }

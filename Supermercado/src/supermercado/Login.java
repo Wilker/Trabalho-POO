@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author Custom
  */
 public class Login {
-    static ArrayList<Cliente> banco = new ArrayList<Cliente>();
+    public static ArrayList<Cliente> banco = new ArrayList<Cliente>();
     
     public static Cliente loginCliente(){ //Retorna a conta a ser manipulada no menuPrincipal()
         Cliente cliente = null;
@@ -21,7 +21,7 @@ public class Login {
         
         if (banco.isEmpty() == true ){
             System.out.println("Cadastre-se primeiro");
-            return null;
+            return null; //Vai dar NULLPointerException se entrar aqui
         }
         
         System.out.println("Login: ");

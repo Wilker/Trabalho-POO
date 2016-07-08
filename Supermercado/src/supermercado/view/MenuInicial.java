@@ -10,7 +10,7 @@ package supermercado.view;
  *
  * @author wilker
  */
-public class Menu {
+public class MenuInicial {
 
     public static void incial() {
         System.out.println("***Insira a opção desejada***");

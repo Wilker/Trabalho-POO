@@ -3,6 +3,7 @@ package supermercado;
 import java.util.Objects;
 
 public class Produto {
+
     protected String nome;
     protected float preco;
 
@@ -15,7 +16,7 @@ public class Produto {
         this.preco = preco;
     }
 
-    /*@Override
+    @Override
     public int hashCode() {
         return nome.hashCode();
     }
@@ -36,10 +37,15 @@ public class Produto {
             return false;
         }
         return true;
-    }*/
+    }
 
     public String getNome() {
         return nome;
     }
 
+    @Override
+    public String toString() {
+        return "Produto{" + "nome=" + nome + ", preco=" + preco + '}';
+    }
+ 
 }
