@@ -11,11 +11,11 @@ public class Pedido {
     Cliente cliente;
     Caixa caixa;
 
-    Pedido(ArrayList<ItemCarrinho> array, Cliente clientePedido, Caixa caixa) {
+    Pedido(Carrinho carrinho, Cliente clientePedido, Caixa caixa) {
         data = new Date();
         codigo = (int) ((Math.random()) + (Math.random()) * 100);
         cliente = clientePedido;
-        itens = array;
+        itens = carrinho.getCarrinho();
         this.caixa = caixa;
     }
 

@@ -56,11 +56,11 @@ public class Estoque {
         estoque.add(pe);
     }
 
-    static void darBaixa(ArrayList<ItemCarrinho> carrinho) {
+    static void darBaixa(Carrinho carrinho) {
         int quantidade;
-        for (int i = 0; i < carrinho.size(); i++) {
-            if (buscaProduto(carrinho.get(i).getProduto().getNome()) == true) {
-                quantidade = carrinho.get(i).getQtd();
+        for (int i = 0; i < carrinho.getCarrinho().size(); i++) {
+            if (buscaProduto(carrinho.getCarrinho().get(i).getProduto().getNome()) == true) {
+                quantidade = carrinho.getCarrinho().get(i).getQtd();
                 int novaQuantidade = estoque.get(i).getQuantidadeEstoque() - quantidade;
               //  pegaProduto(carrinho.get(i).getProduto().getNome()).setQuantidadeEstoque(novaQuantidade);
             }
