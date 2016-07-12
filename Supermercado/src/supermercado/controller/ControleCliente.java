@@ -35,13 +35,13 @@ public class ControleCliente {
             }
         } while (!Valida.validaNome(dadosCliente[2]) || !Valida.validaSenha(dadosCliente[3]));
 //                                              0 - nome, 1 - email, 2 - login, 3 - senha, 4 - CPF
-        cliente = new Cliente(dadosCliente[0], dadosCliente[1], dadosCliente[2], dadosCliente[3], Integer.parseInt(dadosCliente[4]));
+        cliente = new Cliente(dadosCliente[0], dadosCliente[1], dadosCliente[2], dadosCliente[3], dadosCliente[4]);
         Login.banco.add(cliente);
         System.out.println("Cadastrado com sucesso!");//Se for trocar pra interface gráfica depois é só chamar um JOptionPane aqui
         System.out.println("");
     }
 
-    //TODO corrigir case 3 e 4
+    //TODO corrigir case 3 e 4 FIXED
     public void menuCliente(Cliente cliente) {
         int opcao;
         do {
@@ -50,7 +50,8 @@ public class ControleCliente {
             String nomeProd;
             switch (opcao) {
                 case 0:
-                    System.out.println("Logout feito com sucesso."); //FIXME opção de logout somente diz que fez logout mas não faz mais nada
+                    System.out.println("Logout feito com sucesso."); //FIXME opção de logout somente diz que fez logout mas não faz mais nada FIXED
+                    break;
                 case 1:
                     Estoque.imprimeEstoque();
                     nomeProd = visãoCliente.diálogoDeBuscaDeProduto();
@@ -71,7 +72,7 @@ public class ControleCliente {
                     break;
                 case 4:
                     int caixa = visãoCliente.diálogoDeIdaAoCaixa();
-                    cliente.irAoCaixa(teclado.nextInt());
+                    cliente.irAoCaixa(caixa);
                     break;
                 default:
                     System.out.println("Opção inválida.");//Se for trocar pra interface gráfica depois é só chamar um JOptionPane aqui

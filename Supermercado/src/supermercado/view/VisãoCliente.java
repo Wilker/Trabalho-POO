@@ -29,7 +29,7 @@ public class VisãoCliente {
         dados[3] = in.next();
         System.out.println("Senha registrado!");
         System.out.println("Digite seu CPF(sem traços): ");
-        int cpf = in.nextInt();
+        long cpf = in.nextLong();
         dados[4] = String.valueOf(cpf);
         return dados;
     }
@@ -59,7 +59,14 @@ public class VisãoCliente {
 
     public int diálogoDeQuantidade() {
         System.out.println("Insira a quantidade: ");
-        return in.nextInt();
+        int qtd = in.nextInt();
+        if ( qtd > 0){
+            return qtd;
+        }
+        else{
+            System.out.println("Quantidade deve ser maior que zero.");
+            return diálogoDeQuantidade();
+        }
     }
 
     public void imprimeValorProduto(float valor) {

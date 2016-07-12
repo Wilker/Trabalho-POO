@@ -17,7 +17,7 @@ public class Estoque {
      * @return retorna a quantidade em estoque e -1 caso o produto não exista no
      * estoque
      */
-    protected Integer verificaQtdDisponivel(String nome) {
+    static Integer verificaQtdDisponivel(String nome) {
         for (ProdutoEstoque prodEstq : estoque) {
             if (nome.equalsIgnoreCase(prodEstq.produto.nome)) {
                 return prodEstq.getQuantidadeEstoque();
@@ -59,12 +59,21 @@ public class Estoque {
     static void darBaixa(Carrinho carrinho) {
         int quantidade;
         for (int i = 0; i < carrinho.getCarrinho().size(); i++) {
-            if (buscaProduto(carrinho.getCarrinho().get(i).getProduto().getNome()) == true) {
                 quantidade = carrinho.getCarrinho().get(i).getQtd();
-                int novaQuantidade = estoque.get(i).getQuantidadeEstoque() - quantidade;
-              //  pegaProduto(carrinho.get(i).getProduto().getNome()).setQuantidadeEstoque(novaQuantidade);
+                ProdutoEstoque peAtual = getProdutoEstoque(carrinho.getCarrinho().get(i).getProduto());
+                int novaQuantidade = peAtual.getQuantidadeEstoque() - quantidade;
+                peAtual.setQuantidadeEstoque(novaQuantidade);
+        }
+    }
+    
+    static ProdutoEstoque getProdutoEstoque(Produto produto){
+        for (int i = 0; i < estoque.size(); i++){
+            if (produto.getNome().equals(estoque.get(i).produto.getNome())){
+                return estoque.get(i);
             }
         }
+        System.out.println("Produto não encontrado");
+        return null;
     }
 
     public void relatorioEstoque() {

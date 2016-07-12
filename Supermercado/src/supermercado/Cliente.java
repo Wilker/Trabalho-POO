@@ -7,7 +7,7 @@ public class Cliente {
     Scanner teclado = new Scanner(System.in);
     private String nome;
     private String email;
-    private int cpf;
+    private String cpf;
     Carrinho carrinho;
     private String login;
     private String senha;
@@ -29,10 +29,14 @@ public class Cliente {
     }
 
     public void adicionarAoCarrinho(Produto produto, int qtd) {
-        if (carrinho == null) {
+        if (carrinho.getCarrinho().isEmpty()) {
             inicializaCarrinho();
         }
-        carrinho.adicionarAoCarrinho(produto, qtd);
+        if (Estoque.verificaQtdDisponivel(produto.getNome()) >= qtd) {
+            carrinho.adicionarAoCarrinho(produto, qtd);
+        } else {
+            System.out.println("Desculpe, não temos essa quantidade em estoque.");
+        }
     }
 
     public void removerDoCarrinho(Produto produto) {
@@ -45,6 +49,10 @@ public class Cliente {
 
     //FIXME Mover para classe de controle de cliente
     public void irAoCaixa(int opcao) {
+        if (carrinho.getCarrinho().isEmpty()){
+            System.out.println("Carrinho vazio.");
+        }
+        else{
         switch (opcao) {
             case 1:
                 ListaCaixa.caixas.get(opcao - 1).receberClienteNoCaixa(this);
@@ -59,6 +67,7 @@ public class Cliente {
                 System.out.println("Caixa inválido. Insira um válido: ");
                 irAoCaixa(teclado.nextInt());
                 break;
+            }
         }
     }
 
@@ -81,12 +90,13 @@ public class Cliente {
         return carrinho.getProdutoCarrinho(nome);
     }
 
-    public Cliente(String nome, String email, String login, String senha, int cpf) {
+    public Cliente(String nome, String email, String login, String senha, String cpf) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.login = login;
         this.senha = senha;
+        inicializaCarrinho();
     }
 
 }

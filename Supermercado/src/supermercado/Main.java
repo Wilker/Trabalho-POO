@@ -5,7 +5,7 @@ import supermercado.controller.ControleCliente;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws NullPointerException, Exception {
         Funcionario f1 = new Funcionario("João");
         Funcionario f2 = new Funcionario("Maria");
         Funcionario f3 = new Funcionario("José");
@@ -42,14 +42,18 @@ public class Main {
 
             switch (opcao) {
                 case 1:
+                    try{
                     ControleCliente controleCliente = new ControleCliente();
                     controleCliente.menuCliente(Login.loginCliente());
+                    }
+                    catch(NullPointerException NPEx){
+                        System.out.println("Cadastre-se primeiro");
+                    }
                     break;
 
                 case 2:
                     ControleCliente ctrlCliente = new ControleCliente();
                     ctrlCliente.cadastrar();
-                    Cliente user1 = new Cliente();
                     break;
 
                 case 3:

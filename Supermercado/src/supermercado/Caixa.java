@@ -1,5 +1,6 @@
 package supermercado;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Caixa {
@@ -39,7 +40,8 @@ public class Caixa {
     
     
     void receberClienteNoCaixa(Cliente cliente){
-        Pedido pedido = new Pedido(cliente.carrinho, cliente, this); //Instancia o pedido referente ao carrinho do cliente.
+        Pedido pedido; 
+        pedido = new Pedido(cliente.carrinho, cliente, this);
         
         
         pedido.imprimeVenda(); //Imprime o relatório completo da venda.
@@ -83,6 +85,12 @@ public class Caixa {
         }
         
         HistoricoVenda.vendas.add(pedido);
+        
+        ArrayList arrayList = new ArrayList();
+        for (int i = 0; i < cliente.carrinho.getCarrinho().size(); i++) {
+            arrayList.add(cliente.carrinho.getCarrinho().get(i));
+        }
+        cliente.carrinho.getCarrinho().removeAll(arrayList);
     }
 
     float getPrecoTotal() {
