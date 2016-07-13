@@ -27,12 +27,23 @@ public class ControleEstoque {
      *
      * @param nome
      * @param preco
+     * @param tipo
+     * @throws java.lang.Exception
      */
-    public void cadastraProduto(String nome, float preco) throws Exception {
+    public void cadastraProduto(String nome, float preco, int tipo) throws Exception {
         if (Valida.validaNome(nome) && Valida.validaPreco(preco)) {
-            //TODO definir se serão as classes ProdutoQuilo e ProtudoUnidade que serão usadas
-            Produto novo = new Produto(nome, preco);
-            controle.cadastraNoEstoque(novo, 0);
+            if (tipo > 2) {
+                throw new Exception("Tipo inválido");
+            }
+            Produto novo;
+            if (tipo == 1) {
+                novo = new ProdutoQuilo(nome, preco);
+                controle.cadastraNoEstoque(novo, 0);
+            }
+            if (tipo == 2) {
+                novo = new ProdutoUnidade(nome, preco);
+                controle.cadastraNoEstoque(novo, 0);
+            }
         } else {
             throw new Exception("nome ou preço inválidos");
         }
