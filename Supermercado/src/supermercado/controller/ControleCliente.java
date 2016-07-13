@@ -50,7 +50,8 @@ public class ControleCliente {
             String nomeProd;
             switch (opcao) {
                 case 0:
-                    System.out.println("Logout feito com sucesso."); //FIXME opção de logout somente diz que fez logout mas não faz mais nada
+                    System.out.println("Logout feito com sucesso.");
+                     break;
                 case 1:
                     Estoque.imprimeEstoque();
                     nomeProd = visãoCliente.diálogoDeBuscaDeProduto();
