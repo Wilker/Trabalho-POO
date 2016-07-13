@@ -20,13 +20,13 @@ public class Main {
         Gerente gerente = new Gerente("Fábio");
         gerente.acessoAoEstoque(e);
         //gerente.controle.cadastraProduto("Morango", (float) 0.5);
-        gerente.controle.cadastraProduto("Morango", 0.5f, 2);
+        gerente.controle.cadastraProduto("Morango", 0.5f, 1);
         gerente.controle.adicionaAoEstoque("Morango", 20);
-        gerente.controle.cadastraProduto("Pêra", 0.75f, 2);
+        gerente.controle.cadastraProduto("Pêra", 0.75f, 1);
         gerente.controle.adicionaAoEstoque("Pêra", 17);
-        gerente.controle.cadastraProduto("Banana", 1.5f, 2);
+        gerente.controle.cadastraProduto("Banana", 1.5f, 1);
         gerente.controle.adicionaAoEstoque("Banana", 19);
-        gerente.controle.cadastraProduto("Uva", 2.0f,2);
+        gerente.controle.cadastraProduto("Uva", 2.0f,1);
         gerente.controle.adicionaAoEstoque("Uva", 14);
 
         int opcao;
