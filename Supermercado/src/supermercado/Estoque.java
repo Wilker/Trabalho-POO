@@ -17,7 +17,7 @@ public class Estoque {
      * @return retorna a quantidade em estoque e -1 caso o produto não exista no
      * estoque
      */
-    static Integer verificaQtdDisponivel(String nome) {
+    static float verificaQtdDisponivel(String nome) {
         for (ProdutoEstoque prodEstq : estoque) {
             if (nome.equalsIgnoreCase(prodEstq.produto.nome)) {
                 return prodEstq.getQuantidadeEstoque();
@@ -57,11 +57,11 @@ public class Estoque {
     }
 
     static void darBaixa(Carrinho carrinho) {
-        int quantidade;
+        float quantidade;
         for (int i = 0; i < carrinho.getCarrinho().size(); i++) {
                 quantidade = carrinho.getCarrinho().get(i).getQtd();
                 ProdutoEstoque peAtual = getProdutoEstoque(carrinho.getCarrinho().get(i).getProduto());
-                int novaQuantidade = peAtual.getQuantidadeEstoque() - quantidade;
+                float novaQuantidade = peAtual.getQuantidadeEstoque() - quantidade;
                 peAtual.setQuantidadeEstoque(novaQuantidade);
         }
     }
@@ -81,19 +81,10 @@ public class Estoque {
         System.out.println("");
         for (ProdutoEstoque prodEsqt : estoque) {
             System.out.println("Produto: " + prodEsqt.produto.getNome());
-            if(prodEsqt.getProdutoEstoque() instanceof ProdutoQuilo){
-                System.out.println("Quantidade inicial: " + prodEsqt.getQuantidadeInicial() + "kg");
-                System.out.println("Quantidade atual: " + prodEsqt.getQuantidadeEstoque() + "kg");
-                System.out.println("Vendas: " + (prodEsqt.getQuantidadeInicial() - prodEsqt.getQuantidadeEstoque()) + "kg");
-                System.out.println("");
-            }
-            
-            if(prodEsqt.getProdutoEstoque() instanceof ProdutoUnidade){
-                System.out.println("Quantidade inicial: " + prodEsqt.getQuantidadeInicial() + " unidades");
-                System.out.println("Quantidade atual: " + prodEsqt.getQuantidadeEstoque() + " unidades");
-                System.out.println("Vendas: " + (prodEsqt.getQuantidadeInicial() - prodEsqt.getQuantidadeEstoque()) + " unidades");
-                System.out.println("");
-            }
+            System.out.println("Quantidade inicial: " + prodEsqt.getQuantidadeInicial());
+            System.out.println("Quantidade atual: " + prodEsqt.getQuantidadeEstoque());
+            System.out.println("Vendas: " + (prodEsqt.getQuantidadeInicial() - prodEsqt.getQuantidadeEstoque()));
+            System.out.println("");
         }
     }
 

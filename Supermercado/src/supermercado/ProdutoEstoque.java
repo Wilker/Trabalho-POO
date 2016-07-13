@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -13,24 +13,24 @@ import java.util.Objects;
  */
 public class ProdutoEstoque {
     Produto produto;
-    private int quantidadeAtual;
-    private int quantidadeInicial;
+    private float quantidadeAtual;
+    private float quantidadeInicial;
     
-    ProdutoEstoque(Produto produto, int quantidade){
+    ProdutoEstoque(Produto produto, float quantidade){
         this.produto = produto;
         this.quantidadeInicial = quantidade;
         this.quantidadeAtual = quantidade;
     }
     
-    public int getQuantidadeEstoque(){
+    public float getQuantidadeEstoque(){
         return quantidadeAtual;
     }
     
-    public void setQuantidadeEstoque(int quantidade){
+    public void setQuantidadeEstoque(float quantidade){
         this.quantidadeAtual = quantidade;
     }
     
-    public void setQuantidadeInicial(int quantidade){
+    public void setQuantidadeInicial(float quantidade){
         this.quantidadeInicial = quantidade;
     }
     
@@ -38,7 +38,7 @@ public class ProdutoEstoque {
         return produto;
     }
     
-    public int getQuantidadeInicial(){
+    public float getQuantidadeInicial(){
         return quantidadeInicial;
     }
 

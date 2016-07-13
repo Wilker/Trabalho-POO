@@ -3,7 +3,7 @@ package supermercado;
 public class ItemCarrinho {
 
     private Produto produto;
-    private int qtd;
+    private float qtd;
 //    private boolean tipo;
 
     public ItemCarrinho(Produto produto, int qtde) {
@@ -11,7 +11,10 @@ public class ItemCarrinho {
         this.qtd = qtde;
     }
 
-    float subtotal() {
+    public float subtotal() {
+        if(produto instanceof ProdutoQuilo){
+         return Balanca.calculaValor(this);
+        } 
         return this.qtd * produto.getPreco();
     }
 
@@ -19,7 +22,7 @@ public class ItemCarrinho {
         return produto;
     }
 
-    public int getQtd() {
+    public float getQtd() {
         return qtd;
     }
 }
