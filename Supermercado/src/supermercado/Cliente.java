@@ -76,7 +76,7 @@ public class Cliente {
         return produto;
     }
 
-    private void inicializaCarrinho() {
+    public void inicializaCarrinho() {
         this.carrinho = new Carrinho();
     }
 

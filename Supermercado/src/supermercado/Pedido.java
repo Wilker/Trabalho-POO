@@ -39,5 +39,6 @@ public class Pedido {
             System.out.println(" " + i + "      " + item.getProduto().getNome() + "    " + item.getQtd() + "   R$" + item.subtotal());
         }
         System.out.println("Preço total: R$" + precoTotal());
+        System.out.println("");
     }
 }

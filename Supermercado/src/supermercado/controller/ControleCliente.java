@@ -73,6 +73,7 @@ public class ControleCliente {
                 case 4:
                     int caixa = visãoCliente.diálogoDeIdaAoCaixa();
                     cliente.irAoCaixa(caixa);
+                    cliente.inicializaCarrinho();
                     break;
                 default:
                     System.out.println("Opção inválida.");//Se for trocar pra interface gráfica depois é só chamar um JOptionPane aqui

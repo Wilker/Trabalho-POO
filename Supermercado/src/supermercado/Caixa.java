@@ -85,12 +85,6 @@ public class Caixa {
         }
         
         HistoricoVenda.vendas.add(pedido);
-        
-        ArrayList arrayList = new ArrayList();
-        for (int i = 0; i < cliente.carrinho.getCarrinho().size(); i++) {
-            arrayList.add(cliente.carrinho.getCarrinho().get(i));
-        }
-        cliente.carrinho.getCarrinho().removeAll(arrayList);
     }
 
     float getPrecoTotal() {
