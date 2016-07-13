@@ -28,7 +28,7 @@ public class Cliente {
         return senha;
     }
 
-    public void adicionarAoCarrinho(Produto produto, int qtd) {
+    public void adicionarAoCarrinho(Produto produto, float qtd) {
         if (carrinho.getCarrinho().isEmpty()) {
             inicializaCarrinho();
         }

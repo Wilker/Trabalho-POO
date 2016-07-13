@@ -56,7 +56,8 @@ public class ControleCliente {
                     Estoque.imprimeEstoque();
                     nomeProd = visãoCliente.diálogoDeBuscaDeProduto();
                     produto = cliente.buscaProduto(nomeProd);
-                    int qtd = visãoCliente.diálogoDeQuantidade();
+                    float qtd;
+                    qtd = visãoCliente.diálogoDeQuantidade();
                     cliente.adicionarAoCarrinho(produto, qtd);
                     break;
                 case 2:

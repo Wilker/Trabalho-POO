@@ -36,7 +36,12 @@ public class Pedido {
         System.out.println("Item    Produto   Qtde  Subtotal");
         for (ItemCarrinho item : itens) {
             i++;
-            System.out.println(" " + i + "      " + item.getProduto().getNome() + "    " + item.getQtd() + "   R$" + item.subtotal());
+            if (item.getProduto() instanceof ProdutoQuilo ){
+                System.out.println(" " + i + "      " + item.getProduto().getNome() + "    " + item.getQtd() +"kg" + "   R$" + item.subtotal());
+            }
+            else{
+                System.out.println(" " + i + "      " + item.getProduto().getNome() + "    " + item.getQtd() +" un." + "   R$" + item.subtotal());
+            }
         }
         System.out.println("Preço total: R$" + precoTotal());
         System.out.println("");

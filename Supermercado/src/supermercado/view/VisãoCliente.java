@@ -57,9 +57,9 @@ public class VisãoCliente {
         return in.next();
     }
 
-    public int diálogoDeQuantidade() {
+    public float diálogoDeQuantidade() {
         System.out.println("Insira a quantidade: ");
-        int qtd = in.nextInt();
+        float qtd = (float) in.nextFloat();
         if ( qtd > 0){
             return qtd;
         }

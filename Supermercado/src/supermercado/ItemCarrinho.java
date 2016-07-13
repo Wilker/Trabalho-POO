@@ -6,7 +6,7 @@ public class ItemCarrinho {
     private float qtd;
 //    private boolean tipo;
 
-    public ItemCarrinho(Produto produto, int qtde) {
+    public ItemCarrinho(Produto produto, float qtde) {
         this.produto = produto;
         this.qtd = qtde;
     }

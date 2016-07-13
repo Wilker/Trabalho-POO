@@ -80,11 +80,19 @@ public class Estoque {
         System.out.println("RELATÓRIO DE ESTOQUE:");
         System.out.println("");
         for (ProdutoEstoque prodEsqt : estoque) {
-            System.out.println("Produto: " + prodEsqt.produto.getNome());
-            System.out.println("Quantidade inicial: " + prodEsqt.getQuantidadeInicial());
-            System.out.println("Quantidade atual: " + prodEsqt.getQuantidadeEstoque());
-            System.out.println("Vendas: " + (prodEsqt.getQuantidadeInicial() - prodEsqt.getQuantidadeEstoque()));
-            System.out.println("");
+            if(prodEsqt.getProdutoEstoque() instanceof ProdutoQuilo){
+                 System.out.println("Quantidade inicial: " + prodEsqt.getQuantidadeInicial() + "kg");
+                 System.out.println("Quantidade atual: " + prodEsqt.getQuantidadeEstoque() + "kg");
+                 System.out.println("Vendas: " + (prodEsqt.getQuantidadeInicial() - prodEsqt.getQuantidadeEstoque()) + "kg");
+                 System.out.println("");
+             }
+             
+             if(prodEsqt.getProdutoEstoque() instanceof ProdutoUnidade){
+                 System.out.println("Quantidade inicial: " + prodEsqt.getQuantidadeInicial() + " unidades");
+                 System.out.println("Quantidade atual: " + prodEsqt.getQuantidadeEstoque() + " unidades");
+                 System.out.println("Vendas: " + (prodEsqt.getQuantidadeInicial() - prodEsqt.getQuantidadeEstoque()) + " unidades");
+                 System.out.println("");
+             }
         }
     }
 

@@ -14,7 +14,7 @@ public class Carrinho {
         this.listaCompra = new ArrayList<ItemCarrinho>();
     }
 
-    void adicionarAoCarrinho(Produto produto, int qtd) {
+    void adicionarAoCarrinho(Produto produto, float qtd) {
         listaCompra.add(new ItemCarrinho(produto, qtd));
     }
 
